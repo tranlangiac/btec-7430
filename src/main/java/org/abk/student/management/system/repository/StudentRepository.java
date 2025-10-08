@@ -1,12 +1,12 @@
-package org.abk.student.management.system.adt;
+package org.abk.student.management.system.repository;
 
-import org.abk.student.management.system.models.Student;
-import org.abk.student.management.system.models.StudentRank;
+import org.abk.student.management.system.model.Student;
+import org.abk.student.management.system.model.StudentRank;
 
 import java.util.List;
 
 /**
- * StudentList Abstract Data Type (ADT) Interface
+ * StudentRepository Abstract Data Type (ADT) Interface
  * <p>
  * This interface defines the formal specification for a collection of Student objects. <br/>
  * It provides operations for managing students in the system.
@@ -23,7 +23,7 @@ import java.util.List;
  * @author Soft Development ABK
  * @version 1.0
  */
-public interface StudentList {
+public interface StudentRepository {
     boolean insert(Student student);
     boolean remove(String studentId);
     boolean update(Student student);

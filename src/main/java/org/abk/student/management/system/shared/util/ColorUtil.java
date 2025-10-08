@@ -1,7 +1,7 @@
-package org.abk.student.management.system.utils;
+package org.abk.student.management.system.shared.util;
 
-import org.abk.student.management.system.constants.AppConstant;
-import org.abk.student.management.system.models.StudentRank;
+import org.abk.student.management.system.shared.constant.AppConstant;
+import org.abk.student.management.system.model.StudentRank;
 import org.fusesource.jansi.Ansi;
 import org.fusesource.jansi.Ansi.Color;
 

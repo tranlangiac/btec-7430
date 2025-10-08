@@ -1,7 +1,7 @@
-package org.abk.student.management.system.utils;
+package org.abk.student.management.system.shared.util;
 
-import org.abk.student.management.system.models.Student;
-import org.abk.student.management.system.models.StudentRank;
+import org.abk.student.management.system.model.Student;
+import org.abk.student.management.system.model.StudentRank;
 import de.vandermeer.asciitable.AsciiTable;
 import de.vandermeer.asciitable.CWC_LongestLine;
 import de.vandermeer.skb.interfaces.transformers.textformat.TextAlignment;

@@ -1,11 +1,11 @@
 package org.abk.student.management.system.services;
 
-import org.abk.student.management.system.adt.StudentList;
-import org.abk.student.management.system.adt.StudentListImpl;
+import org.abk.student.management.system.repository.StudentRepository;
+import org.abk.student.management.system.repository.InMemoryStudentRepository;
 import org.abk.student.management.system.algorithms.sorting.SortStrategy;
-import org.abk.student.management.system.models.Student;
-import org.abk.student.management.system.models.StudentRank;
-import org.abk.student.management.system.utils.ValidationUtil;
+import org.abk.student.management.system.model.Student;
+import org.abk.student.management.system.model.StudentRank;
+import org.abk.student.management.system.shared.util.ValidationUtil;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -27,34 +27,33 @@ import java.util.stream.Collectors;
  * @author Soft Development ABK
  * @version 1.0
  */
-public record StudentService(StudentList studentList) {
+public record StudentService(StudentRepository studentRepository) {
     public StudentService() {
-        this(new StudentListImpl());
+        this(new InMemoryStudentRepository());
     }
 
     public StudentService {
-        if (studentList == null) {
-            throw new IllegalArgumentException("StudentList cannot be null");
+        if (studentRepository == null) {
+            throw new IllegalArgumentException("StudentRepository cannot be null");
         }
-
     }
 
     public boolean addStudent(String id, String name, double mark) {
-        if (studentList.exists(id)) {
+        if (studentRepository.exists(id)) {
             return false;
         }
 
         Student student = new Student(id, name, mark);
-        return studentList.insert(student);
+        return studentRepository.insert(student);
     }
 
     public Student findStudentById(String id) {
         ValidationUtil.validateId(id);
-        return studentList.find(id);
+        return studentRepository.find(id);
     }
 
     public List<Student> findAllStudents() {
-        return studentList.findAll();
+        return studentRepository.findAll();
     }
 
     public List<Student> findStudentsByRank(StudentRank rank) {
@@ -62,7 +61,7 @@ public record StudentService(StudentList studentList) {
             throw new IllegalArgumentException("Rank cannot be null");
         }
 
-        return studentList.findByRank(rank);
+        return studentRepository.findByRank(rank);
     }
 
     public List<Student> findStudentsByName(String nameQuery) {
@@ -71,63 +70,63 @@ public record StudentService(StudentList studentList) {
         }
 
         String query = nameQuery.trim().toLowerCase();
-        return studentList.findAll().stream()
+        return studentRepository.findAll().stream()
                 .filter(s -> s.getName().toLowerCase().contains(query))
                 .collect(Collectors.toList());
     }
 
     public int size() {
-        return studentList.size();
+        return studentRepository.size();
     }
 
     public boolean isEmpty() {
-        return studentList.isEmpty();
+        return studentRepository.isEmpty();
     }
 
     public boolean studentExists(String id) {
         ValidationUtil.validateId(id);
-        return studentList.exists(id);
+        return studentRepository.exists(id);
     }
 
     public boolean updateStudent(String id, String newName, double newMark) {
-        Student existingStudent = studentList.find(id);
+        Student existingStudent = studentRepository.find(id);
         if (existingStudent == null) {
             return false;
         }
 
         Student updatedStudent = new Student(id, newName, newMark);
-        return studentList.update(updatedStudent);
+        return studentRepository.update(updatedStudent);
     }
 
     public boolean updateStudentMark(String id, double newMark) {
         ValidationUtil.validateId(id);
         ValidationUtil.validateMark(newMark);
 
-        Student student = studentList.find(id);
+        Student student = studentRepository.find(id);
         if (student == null) {
             return false;
         }
 
         Student updatedStudent = new Student(id, student.getName(), newMark);
-        return studentList.update(updatedStudent);
+        return studentRepository.update(updatedStudent);
     }
 
     public boolean updateStudentName(String id, String newName) {
         ValidationUtil.validateId(id);
         ValidationUtil.validateName(newName);
 
-        Student student = studentList.find(id);
+        Student student = studentRepository.find(id);
         if (student == null) {
             return false;
         }
 
         Student updatedStudent = new Student(id, newName, student.getMark());
-        return studentList.update(updatedStudent);
+        return studentRepository.update(updatedStudent);
     }
 
     public boolean deleteStudent(String id) {
         ValidationUtil.validateId(id);
-        return studentList.remove(id);
+        return studentRepository.remove(id);
     }
 
     public List<Student> sortStudents(SortStrategy sortStrategy, Comparator<Student> comparator) {
@@ -138,7 +137,7 @@ public record StudentService(StudentList studentList) {
             throw new IllegalArgumentException("Comparator cannot be null");
         }
 
-        List<Student> students = new ArrayList<>(studentList.findAll());
+        List<Student> students = new ArrayList<>(studentRepository.findAll());
         sortStrategy.sort(students, comparator);
         return students;
     }
@@ -168,7 +167,7 @@ public record StudentService(StudentList studentList) {
     }
 
     public double calculateAverageMark() {
-        List<Student> students = studentList.findAll();
+        List<Student> students = studentRepository.findAll();
         if (students.isEmpty()) {
             return 0.0;
         }
@@ -180,21 +179,21 @@ public record StudentService(StudentList studentList) {
     }
 
     public double getHighestMark() {
-        return studentList.findAll().stream()
+        return studentRepository.findAll().stream()
                 .mapToDouble(Student::getMark)
                 .max()
                 .orElse(0.0);
     }
 
     public double getLowestMark() {
-        return studentList.findAll().stream()
+        return studentRepository.findAll().stream()
                 .mapToDouble(Student::getMark)
                 .min()
                 .orElse(0.0);
     }
 
     public int countStudentsByRank(StudentRank rank) {
-        return (int) studentList.findAll().stream()
+        return (int) studentRepository.findAll().stream()
                 .filter(s -> s.getRank() == rank)
                 .count();
     }

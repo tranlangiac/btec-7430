@@ -1,9 +1,9 @@
-package org.abk.student.management.system.seeders;
+package org.abk.student.management.system.shared.seed;
 
-import org.abk.student.management.system.models.StudentRank;
+import org.abk.student.management.system.model.StudentRank;
 import org.abk.student.management.system.services.StudentService;
-import org.abk.student.management.system.utils.ColorUtil;
-import org.abk.student.management.system.utils.InputUtil;
+import org.abk.student.management.system.shared.util.ColorUtil;
+import org.abk.student.management.system.shared.util.InputUtil;
 
 public record StudentSeeder(StudentService studentService) {
     public boolean promptSeedSampleData() {

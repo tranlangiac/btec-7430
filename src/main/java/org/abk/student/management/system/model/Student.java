@@ -1,4 +1,4 @@
-package org.abk.student.management.system.models;
+package org.abk.student.management.system.model;
 
 /**
  * Represents a student in the Student Management System.

@@ -1,6 +1,6 @@
-package org.abk.student.management.system.models;
+package org.abk.student.management.system.model;
 
-import org.abk.student.management.system.constants.AppConstant;
+import org.abk.student.management.system.shared.constant.MarkConstant;
 
 /**
  * Enumeration representing student performance ranks.
@@ -18,11 +18,11 @@ import org.abk.student.management.system.constants.AppConstant;
  * @version 1.0
  */
 public enum StudentRank {
-    FAIL("Fail", AppConstant.FAIL_MARK_MIN, AppConstant.FAIL_MARK_MAX),
-    MEDIUM("Medium", AppConstant.MEDIUM_MARK_MIN, AppConstant.MEDIUM_MARK_MAX),
-    GOOD("Good", AppConstant.GOOD_MARK_MIN, AppConstant.GOOD_MARK_MAX),
-    VERY_GOOD("Very Good", AppConstant.VERY_GOOD_MARK_MIN, AppConstant.VERY_GOOD_MARK_MAX),
-    EXCELLENT("Excellent", AppConstant.EXCELLENT_MARK_MIN, AppConstant.EXCELLENT_MARK_MAX);
+    FAIL(MarkConstant.FAIL_LABEL, MarkConstant.MIN_THRESHOLD, MarkConstant.MEDIUM_THRESHOLD),
+    MEDIUM(MarkConstant.MEDIUM_LABEL, MarkConstant.MEDIUM_THRESHOLD, MarkConstant.GOOD_THRESHOLD),
+    GOOD(MarkConstant.GOOD_LABEL, MarkConstant.GOOD_THRESHOLD, MarkConstant.VERY_GOOD_THRESHOLD),
+    VERY_GOOD(MarkConstant.VERY_GOOD_LABEL, MarkConstant.VERY_GOOD_THRESHOLD, MarkConstant.EXCELLENT_THRESHOLD),
+    EXCELLENT(MarkConstant.EXCELLENT_LABEL, MarkConstant.EXCELLENT_THRESHOLD, MarkConstant.MAX_THRESHOLD);
 
     private final String displayName;
     private final double minMark;
@@ -39,23 +39,23 @@ public enum StudentRank {
     }
 
     public static StudentRank fromMark(double mark) {
-        if (mark < AppConstant.FAIL_MARK_MIN || mark > AppConstant.EXCELLENT_MARK_MAX) {
-            throw new IllegalArgumentException("Mark must be between " + AppConstant.FAIL_MARK_MIN + " and " + AppConstant.EXCELLENT_MARK_MAX);
+        if (mark < MarkConstant.MIN_THRESHOLD || mark > MarkConstant.MAX_THRESHOLD) {
+            throw new IllegalArgumentException("Mark must be between " + MarkConstant.MIN_THRESHOLD + " and " + MarkConstant.MAX_THRESHOLD);
         }
 
-        if (mark < AppConstant.MEDIUM_MARK_MIN) {
+        if (mark < MarkConstant.MEDIUM_THRESHOLD) {
             return FAIL;
         }
 
-        if (mark < AppConstant.GOOD_MARK_MIN) {
+        if (mark < MarkConstant.GOOD_THRESHOLD) {
             return MEDIUM;
         }
 
-        if (mark < AppConstant.VERY_GOOD_MARK_MIN) {
+        if (mark < MarkConstant.VERY_GOOD_THRESHOLD) {
             return GOOD;
         }
 
-        if (mark < AppConstant.EXCELLENT_MARK_MIN) {
+        if (mark < MarkConstant.EXCELLENT_THRESHOLD) {
             return VERY_GOOD;
         }
 

@@ -1,12 +1,12 @@
 package org.abk.student.management.system;
 
-import org.abk.student.management.system.seeders.StudentSeeder;
+import org.abk.student.management.system.shared.seed.StudentSeeder;
 import org.fusesource.jansi.AnsiConsole;
 
 import org.abk.student.management.system.services.StudentService;
 import org.abk.student.management.system.ui.ConsoleUI;
-import org.abk.student.management.system.utils.ColorUtil;
-import org.abk.student.management.system.utils.InputUtil;
+import org.abk.student.management.system.shared.util.ColorUtil;
+import org.abk.student.management.system.shared.util.InputUtil;
 
 /**
  * Main application entry point for the Student Management System.

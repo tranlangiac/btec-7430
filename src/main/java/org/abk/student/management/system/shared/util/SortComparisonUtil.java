@@ -1,4 +1,4 @@
-package org.abk.student.management.system.utils;
+package org.abk.student.management.system.shared.util;
 
 import org.abk.student.management.system.algorithms.sorting.SortStrategy;
 import de.vandermeer.asciitable.AsciiTable;

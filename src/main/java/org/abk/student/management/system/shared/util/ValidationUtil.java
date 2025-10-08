@@ -1,4 +1,4 @@
-package org.abk.student.management.system.utils;
+package org.abk.student.management.system.shared.util;
 
 import java.util.regex.Pattern;
 

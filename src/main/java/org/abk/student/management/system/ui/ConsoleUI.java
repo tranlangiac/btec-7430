@@ -7,10 +7,10 @@ import org.abk.student.management.system.algorithms.sorting.BubbleSortStrategy;
 import org.abk.student.management.system.algorithms.sorting.MergeSortStrategy;
 import org.abk.student.management.system.algorithms.sorting.QuickSortStrategy;
 import org.abk.student.management.system.algorithms.sorting.SortStrategy;
-import org.abk.student.management.system.models.Student;
-import org.abk.student.management.system.models.StudentRank;
+import org.abk.student.management.system.model.Student;
+import org.abk.student.management.system.model.StudentRank;
 import org.abk.student.management.system.services.StudentService;
-import org.abk.student.management.system.utils.*;
+import org.abk.student.management.system.shared.util.*;
 
 import java.util.Comparator;
 import java.util.List;

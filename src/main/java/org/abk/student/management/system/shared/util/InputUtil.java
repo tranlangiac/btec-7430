@@ -1,8 +1,8 @@
-package org.abk.student.management.system.utils;
+package org.abk.student.management.system.shared.util;
 
 import java.util.Scanner;
 
-import org.abk.student.management.system.utils.ValidationUtil.ValidationResult;
+import org.abk.student.management.system.shared.util.ValidationUtil.ValidationResult;
 
 /**
  * Utility class for handling user input from console.

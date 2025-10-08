@@ -1,14 +1,14 @@
-package org.abk.student.management.system.adt;
+package org.abk.student.management.system.repository;
 
-import org.abk.student.management.system.models.Student;
-import org.abk.student.management.system.models.StudentRank;
+import org.abk.student.management.system.model.Student;
+import org.abk.student.management.system.model.StudentRank;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Implementation of the StudentList ADT using ArrayList.
+ * Implementation of the StudentRepository ADT using ArrayList.
  * <p>
  * This implementation uses an ArrayList as the underlying data structure
  * to store Student objects. It maintains the invariant that all student IDs
@@ -31,10 +31,10 @@ import java.util.stream.Collectors;
  * @author Soft Development ABK
  * @version 1.0
  */
-public class StudentListImpl implements StudentList {
+public class InMemoryStudentRepository implements StudentRepository {
     private final List<Student> students;
 
-    public StudentListImpl() {
+    public InMemoryStudentRepository() {
         this.students = new ArrayList<>();
     }
 
@@ -136,7 +136,7 @@ public class StudentListImpl implements StudentList {
             return false;
         }
 
-        StudentListImpl that = (StudentListImpl) obj;
+        InMemoryStudentRepository that = (InMemoryStudentRepository) obj;
         return students.equals(that.students);
     }
 
@@ -149,11 +149,11 @@ public class StudentListImpl implements StudentList {
     @Override
     public String toString() {
         if (isEmpty()) {
-            return "StudentList[empty]";
+            return "StudentRepository[empty]";
         }
 
         StringBuilder sb = new StringBuilder();
-        sb.append("StudentList[size=").append(size()).append("]:\n");
+        sb.append("StudentRepository[size=").append(size()).append("]:\n");
 
         for (Student student : students) {
             sb.append(" ").append(student.toString()).append("\n");
