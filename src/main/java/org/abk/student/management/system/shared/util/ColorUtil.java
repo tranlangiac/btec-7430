@@ -5,6 +5,8 @@ import org.abk.student.management.system.model.StudentRank;
 import org.fusesource.jansi.Ansi;
 import org.fusesource.jansi.Ansi.Color;
 
+import java.io.IOException;
+
 /**
  * Utility class for colorizing console output using Jansi.
  * Provides consistent color scheme for the Student Management System.
@@ -104,6 +106,18 @@ public class ColorUtil {
     }
 
     public static void clearScreen() {
-        System.out.print(Ansi.ansi().eraseScreen().cursor(1, 1));
+//      System.out.print(Ansi.ansi().eraseScreen().cursor(1, 1));
+        try {
+            final String os = System.getProperty("os.name");
+            if (os.contains("Windows")) {
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            } else {
+                // For Linux/macOS
+                Runtime.getRuntime().exec("clear");
+            }
+        } catch (final Exception e) {
+            // Handle exceptions, e.g., if the command fails to execute
+            e.printStackTrace();
+        }
     }
 }

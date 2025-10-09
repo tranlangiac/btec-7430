@@ -8,6 +8,9 @@ import org.abk.student.management.system.ui.ConsoleUI;
 import org.abk.student.management.system.shared.util.ColorUtil;
 import org.abk.student.management.system.shared.util.InputUtil;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Main application entry point for the Student Management System.
  * <p>

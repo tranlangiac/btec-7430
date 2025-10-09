@@ -12,6 +12,7 @@ org\abk\student\management\system\shared\util\ValidationUtil.class
 org\abk\student\management\system\algorithms\searching\SearchStrategy.class
 org\abk\student\management\system\services\StudentService.class
 org\abk\student\management\system\shared\util\SearchComparisonUtil.class
+org\abk\student\management\system\shared\constant\MarkConstant.class
 org\abk\student\management\system\repository\StudentRepository.class
 org\abk\student\management\system\algorithms\sorting\SortStrategy.class
 org\abk\student\management\system\shared\util\InputUtil.class
