@@ -1,5 +1,6 @@
 package org.abk.student.management.system;
 
+import org.abk.student.management.system.model.StudentRank;
 import org.abk.student.management.system.shared.seed.StudentSeeder;
 import org.fusesource.jansi.AnsiConsole;
 

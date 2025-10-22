@@ -13,7 +13,7 @@ import java.util.List;
  * <p>
  * Formal Specification: <br/>
  * - Domain: Collection of Student objects with unique IDs <br/>
- * - Operations: insert, remove, update, find, getAll, size, isEmpty, clear
+ * - Operations: insert, remove, update, find, findAll, findByRank, size, isEmpty, exists
  * <p>
  * Invariants: <br/>
  * - No two students can have the same ID <br/>
@@ -29,8 +29,8 @@ public interface StudentRepository {
     boolean update(Student student);
     Student find(String studentId);
     List<Student> findAll();
+    List<Student> findByRank(StudentRank rank);
     int size();
     boolean isEmpty();
     boolean exists(String studentId);
-    List<Student> findByRank(StudentRank rank);
 }
